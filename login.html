@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - iMile BI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0035F6 60%, #0F3B99 100%);
+      color: #0035F6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .header img {
+      height: 80px; /* AUMENTADO DE 40px PARA 80px */
+    }
+
+    .main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      background-image: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(135deg, #0035F6 60%, #0F3B99 100%);
+      background-blend-mode: overlay;
+    }
+
+    .login-box {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #0035F6;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #0035F6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #002FCC;
+    }
+
+    .graphic-illustration {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .graphic-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .graphic-icons i {
+      font-size: 32px;
+      color: #0035F6;
+    }
+
+    /* Estilo da mensagem de erro */
+    .error-message {
+      color: red;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topo com logo da iMile via URL confiável -->
+  <div class="header">
+    <img src="https://i.ibb.co/xTdrDd4/logo-imile.png" alt="iMile Logo">
+  </div>
+
+  <!-- Área central do login -->
+  <div class="main">
+    <div class="login-box">
+      <h2>Relatórios</h2>
+
+      {% if erro %}
+        <div class="error-message">
+          {{ erro }}
+        </div>
+      {% endif %}
+
+      <form method="POST" action="/login">
+        <input type="text" name="usuario" placeholder="Usuário" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <input type="submit" value="Entrar">
+      </form>
+
+      <!-- Elementos gráficos ilustrativos -->
+      <div class="graphic-illustration">
+        <p>Soluções iMile para visualização de relatórios</p>
+        <div class="graphic-icons">
+          <i data-lucide="bar-chart-3"></i>
+          <i data-lucide="pie-chart"></i>
+          <i data-lucide="line-chart"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
