@@ -18,7 +18,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app.route('/')
+@app.route('/', methods=['GET', 'HEAD'])  # ✅ Suporte para HEAD
 def index():
     if session.get('logado'):
         return redirect(url_for('dashboard'))
@@ -34,10 +34,9 @@ def login():
         session['usuario'] = usuario
         return redirect(url_for('dashboard'))
     else:
-        # Passa a mensagem de erro para o template
         return render_template('login.html', erro='Usuário ou senha inválidos')
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'HEAD'])  # ✅ Suporte para HEAD
 @login_required
 def dashboard():
     usuario = session.get('usuario')
