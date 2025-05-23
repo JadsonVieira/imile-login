@@ -6,8 +6,8 @@ app.secret_key = 'uma_chave_muito_secreta_e_complexa'
 
 usuarios = {
     "admin": "98066972",
-    "thiago.palos@imile.me": '123456',
-    "hugo.fernandes@imile.me": '123456',
+    "thiago.palos@imile.me": '8fG#rT2kL@',
+    "hugo.fernandes@imile.me": 'W9!e4zXp2Q',
 }
 
 def login_required(f):
